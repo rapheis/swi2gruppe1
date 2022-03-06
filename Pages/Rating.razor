@@ -1,0 +1,52 @@
+﻿@page "/rating"
+
+<PageTitle>Rating</PageTitle>
+
+<div class="container">
+
+    <!-- Left part of the rating page; contains entry text and counts number of already rated films -->
+
+    <div id="ratingStart" class="row justify-content-start">
+        <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+            <h2 class="h3 mb-4 page-title">Finde deinen Film</h2>
+            <h3 class="h4">Bewerte mindestens 10 Filme und erhalte deine persönliche Empfehlung</h3>
+        </div>
+
+        <button type="submit" class="btn btn-primary">bestätigen</button>
+
+        <div id="counterRating">6/10</div>
+    </div>
+
+    <!-- Mid part of the rating page; contains like and dislike button and current film-->
+
+    <div id="ratingCenter" class="row justify-content-center">
+        <div id="ratingSubContainer" class="container">
+
+            <div id="likeButton" class="col-2">
+                <button type="submit" class="btn btn-primary">Like</button>
+            </div>
+        
+            <div class="col-8 justify-content-center">
+                <img class="img-thumbnail" src="https://media.services.cinergy.ch/media/raw/7a3b81c6b86da00a894d7c79ecc12fce82638265.jpg"/>
+            </div>
+
+            <div id="dislikeButton" class="col-2">
+                <button type="submit" class="btn btn-primary">Dislike</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- End part of the rating page; searchbar -->
+
+    <div id="ratingEnd" class="row justify-content-end">
+
+
+    </div>
+</div>
+
+
+
+@code {
+
+}
