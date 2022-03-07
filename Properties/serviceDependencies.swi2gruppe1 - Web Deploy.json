@@ -1,11 +1,5 @@
 {
   "dependencies": {
-    "secrets1": {
-      "secretStore": "AzureAppSettings",
-      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.KeyVault/vaults/swi2gruppe1",
-      "type": "secrets.keyVault",
-      "connectionId": "VaultUri"
-    },
     "identityapp1": {
       "secretStore": null,
       "resourceId": null,
@@ -17,6 +11,12 @@
       "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.SignalRService/SignalR/swi2gruppe1",
       "type": "signalr.azure",
       "connectionId": "Azure:SignalR:ConnectionString"
+    },
+    "secrets1": {
+      "secretStore": "AzureAppSettings",
+      "resourceId": "/subscriptions/[parameters('subscriptionId')]/resourceGroups/[parameters('resourceGroupName')]/providers/Microsoft.KeyVault/vaults/swi2gruppe1",
+      "type": "secrets.keyVault",
+      "connectionId": "VaultUri"
     }
   }
 }
