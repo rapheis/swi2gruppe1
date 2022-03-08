@@ -13,11 +13,47 @@
             film.Picture = "Beispiel-Bild";
             return film;
         }
+
+        public static Film[] GetFilmArray() {
+            Film film1 = new Film();
+            film1.ID = 1;
+            film1.Name = "Avengers Infinity War";
+            film1.Picture = "Beispiel-Bild";
+
+            Film film2 = new Film();
+            film2.ID = 2;
+            film2.Name = "Spiderman";
+            film2.Picture = "Beispiel-Bild";
+
+            Film film3 = new Film();
+            film3.ID = 3;
+            film3.Name = "Antman";
+            film3.Picture = "Beispiel-Bild";
+
+            Film film4 = new Film();
+            film4.ID = 4;
+            film4.Name = "Dr. Strange";
+            film4.Picture = "Beispiel-Bild";
+
+            Film film5 = new Film();
+            film5.ID = 5;
+            film5.Name = "Black Widow";
+            film5.Picture = "Beispiel-Bild";
+
+            Film[] filmArray = new Film[]
+            {
+                film1, film2, film3, film4, film5
+            };
+
+            return filmArray;
+        }
+
         public static void SendFilm(Film film)
         {
             Console.WriteLine("hier würde das WebAPI aufgerufen.." + film.ID +
             " " + film.Name);
         }
+
         public static User GetUser()
         {
             Console.WriteLine("hier wäre der WebAPI Get-Aufruf des Users...");

@@ -12,7 +12,7 @@
             <h3 class="h4">Bewerte mindestens 10 Filme und erhalte deine persönliche Empfehlung</h3>
         </div>
 
-        <button type="submit" class="btn btn-primary">bestätigen</button>
+        <button type="submit" @onclick="SendFilm" class="btn btn-primary">bestätigen</button>
 
         <div id="counterRating">6/10</div>
     </div>
@@ -25,15 +25,18 @@
             <div id="likeButton" class="col-2">
                 <button type="submit" class="btn btn-primary">Like</button>
             </div>
-        
+
             <div class="col-8 justify-content-center">
-                <img class="img-thumbnail" src="https://media.services.cinergy.ch/media/raw/7a3b81c6b86da00a894d7c79ecc12fce82638265.jpg"/>
+                <img class="img-thumbnail" src="https://media.services.cinergy.ch/media/raw/7a3b81c6b86da00a894d7c79ecc12fce82638265.jpg" />
+                <input type="number" readonly @bind-value="film.ID" id="id" class="form-control" />
+                <input type="text" readonly @bind-value="film.Name" id="filmname" class="form-control" />
             </div>
 
             <div id="dislikeButton" class="col-2">
                 <button type="submit" class="btn btn-primary">Dislike</button>
             </div>
         </div>
+
 
     </div>
 
@@ -43,10 +46,18 @@
 
 
     </div>
+
+    <ul>
+        @for (int x = 0; x < @filmArray.Length; x++)
+        {
+            <li>
+                @filmArray[@x]
+            </li>
+        }
+    </ul>
+
+    <!-- hier ein ät einfügen direkt vor functions!!!!      functions {
+        string[] test = { "test 1", "test 2", "test 3", "test 4", "test 5" };
+    }-->
+
 </div>
-
-
-
-@code {
-
-}
