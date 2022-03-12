@@ -14,7 +14,7 @@
             return film;
         }
 
-        public static Film[] GetFilmArray() {
+        public static Film[] GetRandomFilm() {
             Film film1 = new Film();
             film1.ID = 1;
             film1.Name = "Avengers Infinity War";
@@ -40,13 +40,49 @@
             film5.Name = "Black Widow";
             film5.Picture = "Beispiel-Bild";
 
-            Film[] filmArray = new Film[]
+            Film[] randomFilm = new Film[]
             {
                 film1, film2, film3, film4, film5
             };
 
-            return filmArray;
+            return randomFilm;
         }
+
+        public static Film[] GetRecommendedFilm()
+        {
+            Film film11 = new Film();
+            film11.ID = 11;
+            film11.Name = "Black Panther";
+            film11.Picture = "Beispiel-Bild";
+
+            Film film12 = new Film();
+            film12.ID = 12;
+            film12.Name = "Eternals";
+            film12.Picture = "Beispiel-Bild";
+
+            Film film13 = new Film();
+            film13.ID = 13;
+            film13.Name = "Iron man";
+            film13.Picture = "Beispiel-Bild";
+
+            Film film14 = new Film();
+            film14.ID = 14;
+            film14.Name = "Thor";
+            film14.Picture = "Beispiel-Bild";
+
+            Film film15 = new Film();
+            film15.ID = 15;
+            film15.Name = "Blade";
+            film15.Picture = "Beispiel-Bild";
+
+            Film[] recommendedFilm = new Film[]
+            {
+                film11, film12, film13, film14, film15
+            };
+
+            return recommendedFilm;
+        }
+
 
         public static void SendFilm(Film film)
         {

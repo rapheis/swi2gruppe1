@@ -14,11 +14,12 @@
 
         <button type="submit" @onclick="SendFilm" class="btn btn-primary">bestätigen</button>
 
-        <div id="counterRating">6/10</div>
+        <p role="status">bereits bewertet: @currentCount/10</p>
+
     </div>
 
     <!-- Mid part of the rating page; contains like and dislike button and current film-->
-
+    <!--
     <div id="ratingCenter" class="row justify-content-center">
         <div id="ratingSubContainer" class="container">
 
@@ -39,7 +40,7 @@
 
 
     </div>
-
+    -->
     <!-- End part of the rating page; searchbar -->
 
     <div id="ratingEnd" class="row justify-content-end">
@@ -47,17 +48,18 @@
 
     </div>
 
-    <ul>
-        @for (int x = 0; x < @filmArray.Length; x++)
+    <ul class="list-group list-group-horizontal">
+        @for (int x = 0; x < @randomFilm.Length; x++)
         {
-            <li>
-                @filmArray[@x]
-            </li>
+        <li>
+
+            <p>@randomFilm[@x].Picture</p>
+            <p>@randomFilm[@x].ID</p>
+            <p>@randomFilm[@x].Name</p>
+            <button type="submit" id="ratingLike-@x" @onclick="IncrementCount" class="btn btn-primary">Like</button>
+            <button type="submit" id="ratingDislike-@x" @onclick="IncrementCount" class="btn btn-primary">Dislike</button>
+
+        </li>
         }
     </ul>
-
-    <!-- hier ein ät einfügen direkt vor functions!!!!      functions {
-        string[] test = { "test 1", "test 2", "test 3", "test 4", "test 5" };
-    }-->
-
 </div>
