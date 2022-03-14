@@ -11,18 +11,19 @@
             <h3 class="h4">Du kannst dir deine Empfehlungen auch per Mail zusenden!</h3>
         </div>
 
-        <button type="submit" class="btn btn-primary">absenden</button>
+        <button type="submit" @onclick="ButtonResponseChangeRecom" class="btn btn-primary">absenden</button>
+        <p>@buttonResponseRecom</p>
 
     </div>
 
     <ul class="list-group list-group-horizontal">
-        @for (int x = 0; x < @recommendedFilm.Length; x++)
-        {
+        @for (int x = 0; x < RecommendedFilm.Length; x++)
+            {
             <li>
 
-                <p>@recommendedFilm[@x].Picture</p>
-                <p>@recommendedFilm[@x].ID</p>
-                <p>@recommendedFilm[@x].Name</p>
+                <p>@RecommendedFilm[@x].Picture</p>
+                <p>@RecommendedFilm[@x].ID</p>
+                <p>@RecommendedFilm[@x].Name</p>
 
             </li>
         }

@@ -12,7 +12,10 @@
             <h3 class="h4">Bewerte mindestens 10 Filme und erhalte deine persönliche Empfehlung</h3>
         </div>
 
-        <button type="submit" @onclick="SendFilm" class="btn btn-primary">bestätigen</button>
+        <button type="submit" @onclick="ButtonResponseChangeRating" class="btn btn-primary">bestätigen</button>
+        <p>@buttonResponseRating</p>
+
+        <!-- SendFilm,  -->
 
         <p role="status">bereits bewertet: @currentCount/10</p>
 
@@ -56,8 +59,8 @@
             <p>@randomFilm[@x].Picture</p>
             <p>@randomFilm[@x].ID</p>
             <p>@randomFilm[@x].Name</p>
-            <button type="submit" id="ratingLike-@x" @onclick="IncrementCount" class="btn btn-primary">Like</button>
-            <button type="submit" id="ratingDislike-@x" @onclick="IncrementCount" class="btn btn-primary">Dislike</button>
+            <button type="submit" id="ratingLike-@x" @onclick="IncrementCount(this.id)" class="btn btn-primary">Like</button>
+            <button type="submit" id="ratingDislike-@x" @onclick="IncrementCount(this.id)" class="btn btn-primary">Dislike</button>
 
         </li>
         }

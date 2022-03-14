@@ -1,7 +1,12 @@
-﻿namespace swi2gruppe1.Proxy
+﻿using System;
+using System.Net.Http;
+namespace swi2gruppe1.Proxy
 
 {
+    using System.Net;
     using swi2gruppe1.Data;
+    
+
     public class ProxyWebAPI
     {
         public static Film GetFilm()
@@ -83,6 +88,30 @@
             return recommendedFilm;
         }
 
+        public static Film[] GetSearchFilm()
+        {
+            Film film21 = new Film();
+            film21.ID = 21;
+            film21.Name = "Guardians of the Galaxy";
+            film21.Picture = "Beispiel-Bild";
+
+            Film film22 = new Film();
+            film22.ID = 22;
+            film22.Name = "Captain America";
+            film22.Picture = "Beispiel-Bild";
+
+            Film film23 = new Film();
+            film23.ID = 23;
+            film23.Name = "Guardians of the Galaxy 2";
+            film23.Picture = "Beispiel-Bild";
+
+            Film[] searchedFilm = new Film[]
+            {
+                film21, film22, film23
+            };
+
+            return searchedFilm;
+        }
 
         public static void SendFilm(Film film)
         {
@@ -122,7 +151,29 @@
             Console.WriteLine("hier würde das WebAPI aufgerufen.." + rating.Score);
         }
 
+        //First steps to get the data from the movie DB
+        static async Task GetRequest()
+        {
+            var httpClient = HttpClientFactory.Create();
 
+            var url = "https://api.themoviedb.org/3/discover/movie?api_key=a347abe5eb9af9fbfa2ef6035d858f19&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=2018&with_watch_monetization_types=flatrate";
+            HttpResponseMessage httpResponseMessage =
+            await httpClient.GetAsync(url);
+            if (httpResponseMessage.StatusCode == HttpStatusCode.OK)
+            {
+                var content = httpResponseMessage.Content;
+                var data = await content.ReadAsStringAsync();
+
+                Console.WriteLine(data);
+
+
+            }
+            else
+            {
+                Console.WriteLine($"Error: " + httpResponseMessage.StatusCode);
+            }
+
+        }
 
     }
 }
