@@ -12,8 +12,9 @@ namespace swi2gruppe1.Pages
 
         private int currentCount = 0;
 
-        private HashSet<int> ratedFilmIDs = new HashSet<int>();
+        private int actualButtonID = 0;
 
+        private HashSet<int> ratedFilmIDs = new HashSet<int>();
 
         private void IncrementCount() //@parameter string ButtonID
         {
@@ -30,9 +31,25 @@ namespace swi2gruppe1.Pages
 
         }
 
+        private void IncrementCount(int buttonID) //@parameter string ButtonID
+        {
+            actualButtonID = buttonID;
+
+            /*
+            var numberOfbuttonID = ButtonID.Split("-").Last();
+            int filmID = int.Parse(numberOfbuttonID);
+            ratedFilmIDs.Add(filmID); 
+            currentCount = ratedFilmIDs.Count; 
+            */
+            if (currentCount <= 9)
+            {
+                currentCount++;
+            }
+        }
 
 
-        public async Task SendFilm()
+
+            public async Task SendFilm()
         {
             ProxyWebAPI.SendFilm(film);
         }

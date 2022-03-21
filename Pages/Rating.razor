@@ -4,8 +4,6 @@
 
 <div class="container">
 
-    <!-- Left part of the rating page; contains entry text and counts number of already rated films -->
-
     <div id="ratingStart" class="row justify-content-start">
         <div class="col-12 col-lg-10 col-xl-8 mx-auto">
             <h2 class="h3 mb-4 page-title">Finde deinen Film</h2>
@@ -15,36 +13,11 @@
         <button type="submit" id="responseRating" @onclick="ButtonResponseChangeRating" class="btn btn-primary">bestätigen</button>
         <p>@buttonResponseRating</p>
 
-        <!-- SendFilm,  -->
 
         <p role="status">bereits bewertet: @currentCount/10</p>
 
     </div>
 
-    <!-- Mid part of the rating page; contains like and dislike button and current film-->
-    <!--
-    <div id="ratingCenter" class="row justify-content-center">
-        <div id="ratingSubContainer" class="container">
-
-            <div id="likeButton" class="col-2">
-                <button type="submit" class="btn btn-primary">Like</button>
-            </div>
-
-            <div class="col-8 justify-content-center">
-                <img class="img-thumbnail" src="https://media.services.cinergy.ch/media/raw/7a3b81c6b86da00a894d7c79ecc12fce82638265.jpg" />
-                <input type="number" readonly @bind-value="film.ID" id="id" class="form-control" />
-                <input type="text" readonly @bind-value="film.Name" id="filmname" class="form-control" />
-            </div>
-
-            <div id="dislikeButton" class="col-2">
-                <button type="submit" class="btn btn-primary">Dislike</button>
-            </div>
-        </div>
-
-
-    </div>
-    -->
-    <!-- End part of the rating page; searchbar -->
 
     <div id="ratingEnd" class="row justify-content-end">
 
@@ -54,17 +27,16 @@
     <ul id="filmListRating" class="list-group list-group-horizontal">
         @for (int x = 0; x < @randomFilm.Length; x++)
         {
-        <li>
+            <li>
 
-            <!-- fürs nächste mal button disablen und increment id klären-->
+                <p>@randomFilm[@x].Picture</p>
+                <p>@randomFilm[@x].ID</p>
+                <p>@randomFilm[@x].Name</p>
+                <button type="submit" id="ratingLike-@x" @onclick="@((args) => IncrementCount(x))" class="btn btn-primary">Like</button>
+                <button type="submit" id="ratingDislike-@x" @onclick="IncrementCount" class="btn btn-primary">Dislike</button>
 
-            <p>@randomFilm[@x].Picture</p>
-            <p>@randomFilm[@x].ID</p>
-            <p>@randomFilm[@x].Name</p>
-            <button type="submit" id="ratingLike-@x" @onclick="IncrementCount" class="btn btn-primary">Like</button>
-            <button type="submit" id="ratingDislike-@x" @onclick="IncrementCount" class="btn btn-primary">Dislike</button>
-
-        </li>
+            </li>
         }
     </ul>
+    <p>test @actualButtonID </p>
 </div>
