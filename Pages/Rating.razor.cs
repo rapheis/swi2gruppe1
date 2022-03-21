@@ -12,7 +12,10 @@ namespace swi2gruppe1.Pages
 
         private int currentCount = 0;
 
-        private int actualButtonID = 0;
+        private int actualButtonIDLike = 0;
+        private int actualButtonIDDislike = 0;
+
+        
 
         private HashSet<int> ratedFilmIDs = new HashSet<int>();
 
@@ -31,9 +34,33 @@ namespace swi2gruppe1.Pages
 
         }
 
-        private void IncrementCount(int buttonID) //@parameter string ButtonID
+        protected bool IsDisabledLike { get; set; }
+        protected bool IsDisabledDislike { get; set; }
+
+        private void IncrementCountLike(int buttonIDLike) //@parameter string ButtonID
         {
-            actualButtonID = buttonID;
+            actualButtonIDLike = buttonIDLike;
+            
+
+            
+            /*
+            var numberOfbuttonID = ButtonID.Split("-").Last();
+            int filmID = int.Parse(numberOfbuttonID);
+            ratedFilmIDs.Add(filmID); 
+            currentCount = ratedFilmIDs.Count; 
+            */
+            if (currentCount <= 9)
+            {
+                currentCount++;
+            }
+
+            IsDisabledLike = true;
+        }
+
+        private void IncrementCountDislike(int buttonIDDislike) //@parameter string ButtonID
+        {
+            actualButtonIDDislike = buttonIDDislike;
+            
 
             /*
             var numberOfbuttonID = ButtonID.Split("-").Last();
@@ -45,11 +72,13 @@ namespace swi2gruppe1.Pages
             {
                 currentCount++;
             }
+
+            IsDisabledDislike = true;
         }
 
 
 
-            public async Task SendFilm()
+        public async Task SendFilm()
         {
             ProxyWebAPI.SendFilm(film);
         }

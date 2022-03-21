@@ -32,11 +32,12 @@
                 <p>@randomFilm[@x].Picture</p>
                 <p>@randomFilm[@x].ID</p>
                 <p>@randomFilm[@x].Name</p>
-                <button type="submit" id="ratingLike-@x" @onclick="@((args) => IncrementCount(x))" class="btn btn-primary">Like</button>
-                <button type="submit" id="ratingDislike-@x" @onclick="IncrementCount" class="btn btn-primary">Dislike</button>
+                <button type="submit" id="ratingLike-@x" disabled="@IsDisabledLike" @onclick="@((args) => IncrementCountLike(x))" class="btn btn-primary">Like</button>
+                <button type="submit" id="ratingDislike-@x" disabled="@IsDisabledDislike" @onclick="@((args) => IncrementCountDislike(x))" class="btn btn-primary">Dislike</button>
 
             </li>
         }
     </ul>
-    <p>test @actualButtonID </p>
+    <p>test @actualButtonIDLike </p>
+    <p>test @actualButtonIDDislike </p>
 </div>
