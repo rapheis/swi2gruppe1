@@ -6,17 +6,17 @@ namespace swi2gruppe1.Pages
 
     public partial class Recommendation
     {
-        private Film film = ProxyWebAPI.GetFilm();
+        //private Film film = WebAPIProxy.GetFilmAsync();
 
-        private Film[] recommendedFilm = ProxyWebAPI.GetRecommendedFilm();
+        //private Film[] recommendedFilm = WebAPIProxy.GetRecommendedFilm();
 
-        public Film Film { get => film; set => film = value; }
-        public Film[] RecommendedFilm { get => recommendedFilm; set => recommendedFilm = value; }
+        //public Film Film { get => film; set => film = value; }
+        //public Film[] RecommendedFilm { get => recommendedFilm; set => recommendedFilm = value; }
 
-        public async Task SendFilm()
-        {
-            ProxyWebAPI.SendFilm(Film);
-        }
+        //public async Task SendFilm()
+        //{
+        //    WebAPIProxy.SendFilm(Film);
+        //}
 
         private string buttonResponseRecom = "";
 
