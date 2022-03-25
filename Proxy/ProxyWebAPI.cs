@@ -1,12 +1,88 @@
 ﻿using System;
 using System.Net.Http;
+using Newtonsoft.Json;
+
 namespace swi2gruppe1.Proxy
 
 {
     using System.Net;
     using swi2gruppe1.Data;
-    
 
+    public class WebAPIProxy
+    {
+        // Variablen
+        private string httpLink = "https://swi2gruppe1api.azurewebsites.net";
+        //private string httpLinkAzure = "http://swi2gruppe1api.azurewebsites.net";
+        //private string httpLinkLocal = "https://localhost:49153";
+
+        /*
+         *  Proxy f�r den GET Web-API Aufruf, um Daten zu holen
+         */
+        public async Task<Film[]> GetFilmAsync(string? Name)
+        {
+            IEnumerable<Film>? data = null;
+            var httpClient = new HttpClient();
+            var response = await httpClient.GetAsync(httpLink + "/Film?name=" + Name);
+            if (response.IsSuccessStatusCode)
+            {
+                var responseContent = await response.Content.ReadAsStringAsync();
+                data = JsonConvert.DeserializeObject<IEnumerable<Film>>(responseContent);
+
+            }
+
+            return data.ToArray();
+        }
+        /*
+ 
+
+        /*
+         *  Proxy f�r den POST Web-API Aufruf, um ein Datenobjekt hoch zu laden
+         */
+        public async Task<int> PostFilmAsync(Film film)
+        {
+            var httpClient = new HttpClient();
+            var contentType = "application/json";
+            httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue(contentType));
+            var response = await httpClient.PostAsJsonAsync(httpLink + "/Film", film);
+
+            int returnValue = ((int)response.StatusCode);
+            return returnValue;
+
+        }
+
+        /*
+         *  Proxy f�r den Put Web-API Aufruf, um ein Datenobjekt hoch zu laden
+        */
+        public async Task<int> PutFilmAsync(Film film)
+        {
+            var httpClient = new HttpClient();
+            var contentType = "application/json";
+            httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue(contentType));
+            var response = await httpClient.PutAsJsonAsync(httpLink + "/Film", film);
+
+            int returnValue = ((int)response.StatusCode);
+            return returnValue;
+
+        }
+        /*
+        *  Proxy f�r den DELETE Web-API Aufruf, um ein Datenobjekt hoch zu laden
+        */
+        public async Task<int> DeleteFilmAsync(Film film)
+        {
+            var httpClient = new HttpClient();
+            var contentType = "application/json";
+            httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue(contentType));
+            // hier noch anpassen
+            var response = await httpClient.DeleteAsync(httpLink + "/Film" + "?name=" + film.Name);
+
+            int returnValue = ((int)response.StatusCode);
+            return returnValue;
+
+        }
+    }
+
+
+    /*
     public class ProxyWebAPI
     {
         public static Film GetFilm()
@@ -175,5 +251,5 @@ namespace swi2gruppe1.Proxy
 
         }
 
-    }
+    } */
 }

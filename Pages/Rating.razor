@@ -24,20 +24,42 @@
 
     </div>
 
+    <p>test @film.Name</p>
+
+    <!--
     <ul id="filmListRating" class="list-group list-group-horizontal">
-        @for (int x = 0; x < @randomFilm.Length; x++)
+        @for (int x = 0; x < @films.Length; x++)
         {
             <li>
 
                 <p>@randomFilm[@x].Picture</p>
                 <p>@randomFilm[@x].ID</p>
                 <p>@randomFilm[@x].Name</p>
-                <button type="submit" id="ratingLike-@x" disabled="@IsDisabledLike" @onclick="@((args) => IncrementCountLike(x))" class="btn btn-primary">Like</button>
+                <button type="submit" id="ratingLike-@x" disabled="@IsDisabledLike" @onclick="(async () => IncrementCountLike(x))" class="btn btn-primary">Like</button>
                 <button type="submit" id="ratingDislike-@x" disabled="@IsDisabledDislike" @onclick="@((args) => IncrementCountDislike(x))" class="btn btn-primary">Dislike</button>
+               
+            </li>
+        }
+    </ul> 
 
+    <ul id="filmListRatingTest" class="list-group list-group-horizontal">
+        @foreach(var film in films)
+        {
+            <li>
+
+                <p>@film.Picture</p>
+                <p>@film.ID</p>
+                <p>@film.Name</p>
+                <button type="submit" id="ratingLike" disabled="@IsDisabledLike" @onclick="(async () => await IncrementCountLike(film))" class="btn btn-primary">Like</button>
+                <button type="submit" id="ratingDislike" disabled="@IsDisabledDislike" @onclick="@(async () => await IncrementCountDislike(film))" class="btn btn-primary">Dislike</button>
+                
             </li>
         }
     </ul>
+
     <p>test @actualButtonIDLike </p>
     <p>test @actualButtonIDDislike </p>
+
+    -->
+
 </div>

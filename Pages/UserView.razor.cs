@@ -6,14 +6,14 @@
 
     public partial class UserView
     {
-        private User user = ProxyWebAPI.GetUser();
+        //private User user = WebAPIProxy.GetUser();
 
 
 
-        public async Task SendInformation()
-        {
-            ProxyWebAPI.SendUser(user);
-        }
+        //public async Task SendInformation()
+        //{
+        //    WebAPIProxy.SendUser(user);
+        //}
 
     }
 }
