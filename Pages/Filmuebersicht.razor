@@ -1,0 +1,42 @@
+﻿@page "/filmuebersicht"
+
+<PageTitle>Filmübersicht</PageTitle>
+
+<h1>Filmübersicht</h1>
+
+<p>
+    Diese Seite zeigt die vorhandenen Filme an:
+    <br />
+    <Input type="text" @bind-value="name" @bind-value:event="oninput" />
+    <br />
+    <button class="btn btn-primary" @onclick="NeuLaden">Filme neu laden</button>
+</p>
+@if (films == null)
+{
+    <p><em>Lädt...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Bewertung</th>
+                <th>Empfindung</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var film in films)
+            {
+                <tr>
+                    <td>@film.Id</td>
+                    <td>@film.Name</td>
+                    <td>@film.Rating</td>
+                    <td>@film.Feeling</td>
+                    <td><button type="button" @onclick="(async () => await bearbeiteObjekt(film))">Bearbeiten</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

@@ -1,0 +1,15 @@
+﻿@page "/filmeingabe/{ID}"
+
+<PageTitle>Filmeingabe</PageTitle>
+
+<h1>Filmeingabe</h1>
+
+<p>Bewerte deinen Film.</p>
+<p>Id: <Input type="number" @bind-value="film.Id" @bind-value:event="oninput" /></p>
+<p>Name: <Input type="text" @bind-value="film.Name" @bind-value:event="oninput" /></p>
+<p>Bewertung: <Input type="number" @bind-value="film.Rating" @bind-value:event="oninput" /></p>
+<p>Empfindung: <Input type="text" @bind-value="film.Feeling" @bind-value:event="oninput" /></p>
+<button class="btn btn-primary" @onclick="SendObjekt">Speichern</button>
+<button class="btn btn-primary" @onclick="DeleteObjekt">Löschen</button>
+
+<p>Return-Code: @returnCode</p>

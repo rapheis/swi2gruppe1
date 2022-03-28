@@ -11,18 +11,18 @@ namespace swi2gruppe1.Proxy
     public class WebAPIProxy
     {
         // Variablen
-        private string httpLink = "https://swi2gruppe1api.azurewebsites.net";
-        //private string httpLinkAzure = "http://swi2gruppe1api.azurewebsites.net";
+        private string httpLink = swi2gruppe1.AppConfiguration.APIURL;
+        //private string httpLinkAzure = "https://swi2webapi.azurewebsites.net";
         //private string httpLinkLocal = "https://localhost:49153";
 
         /*
          *  Proxy f�r den GET Web-API Aufruf, um Daten zu holen
          */
-        public async Task<Film[]> GetFilmAsync(string? Name)
+        public async Task<Film[]> GetFilmsAsync(int id, String name)
         {
             IEnumerable<Film>? data = null;
             var httpClient = new HttpClient();
-            var response = await httpClient.GetAsync(httpLink + "/Film?name=" + Name);
+            var response = await httpClient.GetAsync(httpLink + "/Film?id=" + id + @"&name=" + name);
             if (response.IsSuccessStatusCode)
             {
                 var responseContent = await response.Content.ReadAsStringAsync();
@@ -73,7 +73,7 @@ namespace swi2gruppe1.Proxy
             var contentType = "application/json";
             httpClient.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue(contentType));
             // hier noch anpassen
-            var response = await httpClient.DeleteAsync(httpLink + "/Film" + "?name=" + film.Name);
+            var response = await httpClient.DeleteAsync(httpLink + "/Film" + "?Id=" + film.Id);
 
             int returnValue = ((int)response.StatusCode);
             return returnValue;
