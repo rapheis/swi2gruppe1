@@ -4,7 +4,7 @@
   "parameters": {
     "resourceGroupName": {
       "type": "string",
-      "defaultValue": "swi2gruppe1",
+      "defaultValue": "SWI2FS22",
       "metadata": {
         "_parameterType": "resourceGroup",
         "description": "Der Name der Ressourcengruppe für die Ressource. Es wird empfohlen, Ressourcen für eine bessere Nachverfolgung in derselben Ressourcengruppe zu platzieren."
@@ -36,7 +36,7 @@
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "name": "[concat(parameters('resourceGroupName'), 'Deployment', uniqueString(concat('swi2gruppe1', subscription().subscriptionId)))]",
+      "name": "[concat(parameters('resourceGroupName'), 'Deployment', uniqueString(concat('SignalRServiceFS22', subscription().subscriptionId)))]",
       "resourceGroup": "[parameters('resourceGroupName')]",
       "apiVersion": "2019-10-01",
       "dependsOn": [
@@ -56,7 +56,7 @@
                 "capacity": 1
               },
               "location": "[parameters('resourceLocation')]",
-              "name": "swi2gruppe1",
+              "name": "SignalRServiceFS22",
               "type": "Microsoft.SignalRService/SignalR",
               "apiVersion": "2018-10-01"
             }
