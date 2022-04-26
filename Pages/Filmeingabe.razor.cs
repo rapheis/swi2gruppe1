@@ -69,7 +69,7 @@ namespace swi2gruppe1.Pages
 
         private Task Back()
         {
-            var url = @"/fetchdata";
+            var url = @"/filmuebersicht";
             _nav.NavigateTo(url);
             return Task.CompletedTask;
         }

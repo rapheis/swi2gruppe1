@@ -11,9 +11,9 @@ namespace swi2gruppe1.Proxy
     public class WebAPIProxy
     {
         // Variablen
-        //private string httpLink = swi2gruppe1.AppConfiguration.APIURL;
+        private string httpLink = swi2gruppe1.AppConfiguration.APIURL;
         //private string httpLinkAzure = "https://swi2webapi.azurewebsites.net";
-        private string httpLink = "https://localhost:49153";
+        
 
         /*
          *  Proxy f�r den GET Web-API Aufruf, um Daten zu holen

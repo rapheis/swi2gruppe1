@@ -4,8 +4,34 @@
 
 <h1>Filmeingabe</h1>
 
+
+<EditForm Model="@film" OnValidSubmit="@SendObjekt">
+
+
+    <p>Bewerte deinen Film.</p>
+    <p>Id: <Input type="number" @bind-value="film.Id" @bind-value:event="oninput" disabled /></p>
+    <p>Name: <Input type="text" @bind-value="film.Name" @bind-value:event="oninput" /></p>
+    <p>Bewertung: <Input type="number" @bind-value="film.Rating" @bind-value:event="oninput" /></p>
+    <p>Empfindung: <Input type="text" @bind-value="film.Feeling" @bind-value:event="oninput" /></p>
+
+    <p><button class="btn btn-primary" type="submit">Speichern</button>
+    @if (film.Id > 0)
+    {
+        <button class="btn btn-primary" @onclick="DeleteObjekt">Löschen</button>
+    }
+    </p>
+
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <p>REST-Return-Code: @returnCode</p>
+
+</EditForm>
+
+
+
+<!--
 <p>Bewerte deinen Film.</p>
-<p>Id: <Input type="number" @bind-value="film.Id" @bind-value:event="oninput" /></p>
+<p>Id: <Input type="number" @bind-value="film.Id" @bind-value:event="oninput" disabled /></p>
 <p>Name: <Input type="text" @bind-value="film.Name" @bind-value:event="oninput" /></p>
 <p>Bewertung: <Input type="number" @bind-value="film.Rating" @bind-value:event="oninput" /></p>
 <p>Empfindung: <Input type="text" @bind-value="film.Feeling" @bind-value:event="oninput" /></p>
@@ -13,3 +39,5 @@
 <button class="btn btn-primary" @onclick="DeleteObjekt">Löschen</button>
 
 <p>Return-Code: @returnCode</p>
+
+-->
