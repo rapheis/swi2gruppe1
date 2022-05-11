@@ -1,11 +1,14 @@
 ﻿@page "/filmeingabe/{ID}"
 
+@inject IJSRuntime JS
+@inject NavigationManager _nav
+
 <PageTitle>Filmeingabe</PageTitle>
 
 <h1 class="fs-2 fw-bolder">Filmeingabe</h1>
 
 
-<EditForm Model="@film" class="p-3 mb-2 bg-light text-dark shadow bg-body rounded" OnValidSubmit="@SendObjekt">
+<EditForm Model="@film" class="p-3 mb-2 bg-light" OnValidSubmit="@SendObjekt" enctype="multipart/form-data">
 
 
     <p>Bewerte deinen Film.</p>
@@ -13,16 +16,19 @@
     <p>Name: <Input type="text" @bind-value="film.Name" @bind-value:event="oninput" /></p>
     <p>Bewertung: <Input type="number" @bind-value="film.Rating" @bind-value:event="oninput" /></p>
     <p>Empfindung: <Input type="text" @bind-value="film.Feeling" @bind-value:event="oninput" /></p>
+    <p>Lade neues Bild: <InputFile OnChange="ImageLoad" accept="image/*" /></p>
 
     <p><button class="btn btn-primary" type="submit">Speichern</button>
     @if (film.Id > 0)
     {
-        <button class="btn btn-primary" @onclick="DeleteObjekt">Löschen</button>
+        <button class="btn btn-primary ml-5" @onclick="DeleteObjekt">Löschen</button>
     }
     </p>
 
     <DataAnnotationsValidator />
     <ValidationSummary />
-    <p>REST-Return-Code: @returnCode</p>
+    <!--<p>REST-Return-Code: @returnCode</p>-->
+
+    <img id="ImagePreview" />
 
 </EditForm>

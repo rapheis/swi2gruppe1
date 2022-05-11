@@ -13,5 +13,8 @@ namespace swi2gruppe1.Data
         public int Rating { get; set; }
 
         public string? Feeling { get; set; }
+
+        public string? Bild { get; set; }
+        public string? Vorschau { get; set; }
     }
 }
