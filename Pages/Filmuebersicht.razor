@@ -24,16 +24,35 @@ else
                 <th>Name</th>
                 <th>Bewertung</th>
                 <th>Empfindung</th>
+                <th>Bild</th>
             </tr>
         </thead>
         <tbody>
+           @{
+                string imgid;
+                string imgsrc;
+
+            }
+
             @foreach (var film in films)
             {
+
+                var i = film.Id;
+                imgid = "ImagePreview-"+i;
+                imgsrc = "";
+
+                if (film.Vorschau != null &&
+                    !film.Vorschau.Equals(""))
+                {
+                    imgsrc = film.Vorschau;
+                }
+
                 <tr>
                     <td>@film.Id</td>
                     <td>@film.Name</td>
                     <td>@film.Rating</td>
                     <td>@film.Feeling</td>
+                    <td><img id=@imgid src=@imgsrc /></td>
                     <td><button type="button" @onclick="(async () => await bearbeiteObjekt(film))">Bearbeiten</button></td>
                 </tr>
             }

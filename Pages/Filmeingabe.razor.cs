@@ -58,7 +58,7 @@ namespace swi2gruppe1.Pages
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             // Bild noch anzeigen, sofern vorhanden
-            await ShowImage();
+            //await ShowImage();
         }
 
         // nach EditForm geändertes Objekt an WebAPI senden
@@ -101,9 +101,9 @@ namespace swi2gruppe1.Pages
             // Model nachführen
             film.Bild = resizedImage.ToBase64String(JpegFormat.Instance);
             // URI-Info wegnehmen
-            film.Bild = film.Bild.Substring(23);
+            //weatherForecast.Bild = weatherForecast.Bild.Substring(23);
             // Bild anzeigen
-            await ShowImage();
+            //await ShowImage();
         }
         // Bild anzeigen
         private async Task ShowImage()
