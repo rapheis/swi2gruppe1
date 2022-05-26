@@ -18,10 +18,10 @@
     <p>Empfindung: <Input type="text" @bind-value="film.Feeling" @bind-value:event="oninput" /></p>
     <p>Lade neues Bild: <InputFile OnChange="ImageLoad" accept="image/*" /></p>
 
-    <p><button class="btn btn-primary" type="submit">Speichern</button>
+    <p><button class="btn btn-dark me-2" type="submit">Speichern</button>
     @if (film.Id > 0)
     {
-        <button class="btn btn-primary ml-5" @onclick="DeleteObjekt">Löschen</button>
+        <button class="btn btn-dark ml-2" @onclick="DeleteObjekt">Löschen</button>
     }
     </p>
 
@@ -29,6 +29,7 @@
     <ValidationSummary />
     <!--<p>REST-Return-Code: @returnCode</p>-->
 
-    <img id="ImagePreview" src=@film.Bild />
+    <h2 class="mb-2">Vorschaubild:</h2>
+    <img id="ImagePreview" class="shadow p-3 mb-5 bg-body rounded" src=@film.Bild />
 
 </EditForm>

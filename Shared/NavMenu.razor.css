@@ -1,5 +1,5 @@
 ﻿.navbar-toggler {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: #1a1a1a;
 }
 
 .top-row {
@@ -18,6 +18,8 @@
     top: -2px;
 }
 
+
+/* Seitenbaritems werden hier bearbeitet */
 .nav-item {
     font-size: 0.9rem;
     padding-bottom: 0.5rem;
@@ -41,12 +43,12 @@
     }
 
 .nav-item ::deep a.active {
-    background-color: rgba(255,255,255,0.25);
+    background-color: #404040;
     color: white;
 }
 
 .nav-item ::deep a:hover {
-    background-color: rgba(255,255,255,0.1);
+    background-color: #333333;
     color: white;
 }
 
@@ -59,8 +61,4 @@
         /* Never collapse the sidebar for wide screens */
         display: block;
     }
-}
-
-#bg-color {
-    
 }

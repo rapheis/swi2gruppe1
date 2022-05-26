@@ -5,19 +5,21 @@
 <h1 class="fs-2 fw-bolder">Filmübersicht</h1>
 
 <p>
-    Diese Seite zeigt die vorhandenen Filme an:
-    <br />
-    <Input type="text" @bind-value="name" @bind-value:event="oninput" />
-    <br />
-    <button class="btn btn-primary" @onclick="NeuLaden">Filme neu laden</button>
+<p class="mb-3">Diese Seite zeigt die vorhandenen Filme an:</p>
+<div class="input-group mb-3">
+    <input type="text" @bind-value="name" @bind-value:event="oninput" class="form-control" placeholder="Filmname" aria-label="Filmname" aria-describedby="button-filmsuche">
+    <button class="btn btn-outline-secondary" type="button" id="button-filmsuche" @onclick="NeuLaden">Filme neu laden</button>
+</div>
 </p>
 @if (films == null)
 {
-    <p><em>Lädt...</em></p>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <lottie-player src="https://assets9.lottiefiles.com/packages/lf20_riok2joc.json" background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay></lottie-player>
+    <p class="mt-2">Lädt alle Filme...</p>
 }
 else
 {
-    <table class="table table-striped table-hover">
+    <table class="table table-dark table-hover">
         <thead>
             <tr>
                 <th>Id</th>
@@ -28,7 +30,7 @@ else
             </tr>
         </thead>
         <tbody>
-           @{
+            @{
                 string imgid;
                 string imgsrc;
 
@@ -38,7 +40,7 @@ else
             {
 
                 var i = film.Id;
-                imgid = "ImagePreview-"+i;
+                imgid = "ImagePreview-" + i;
                 imgsrc = "";
 
                 if (film.Vorschau != null &&
@@ -53,7 +55,7 @@ else
                     <td>@film.Rating</td>
                     <td>@film.Feeling</td>
                     <td><img id=@imgid src=@imgsrc /></td>
-                    <td><button type="button" @onclick="(async () => await bearbeiteObjekt(film))">Bearbeiten</button></td>
+                    <td><button type="button" class="btn btn-light m-1" @onclick="(async () => await bearbeiteObjekt(film))">Bearbeiten</button></td>
                 </tr>
             }
         </tbody>
